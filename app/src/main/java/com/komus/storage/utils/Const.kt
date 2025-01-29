@@ -5,5 +5,6 @@ object Const {
     const val AUTH = "api/Token/Auth"
 
     const val SEARCH_PRUNIT = "/searchPrunit"
+    const val SEARCH_ARTICLE = "/search"
 
 }

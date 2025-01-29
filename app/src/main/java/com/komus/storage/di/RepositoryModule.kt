@@ -1,6 +1,7 @@
 package com.komus.storage.di
 
 import com.komus.storage.data.remote.ApiService
+import com.komus.storage.data.repository.ArticleRepository
 import com.komus.storage.data.repository.AuthRepository
 import com.komus.storage.data.repository.PrunitRepository
 import dagger.Module
@@ -23,5 +24,11 @@ object RepositoryModule {
     @Singleton
     fun providePrunitRepository(apiService: ApiService): PrunitRepository {
         return PrunitRepository(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideArticleRepository(apiService: ApiService): ArticleRepository {
+        return ArticleRepository(apiService)
     }
 }
