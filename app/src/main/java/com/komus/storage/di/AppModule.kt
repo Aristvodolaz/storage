@@ -2,12 +2,9 @@ package com.komus.storage.di
 
 import android.content.Context
 import androidx.room.Room
-import com.komus.storage.data.local.dao.AppDatabase
+import com.komus.storage.data.local.AppDatabase
 import com.komus.storage.data.remote.ApiService
-import com.komus.storage.data.repository.AuthRepository
-import com.komus.storage.data.usecase.AuthenticateUseCase
 import com.komus.storage.utils.Const
-import com.komus.storage.utils.SPHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +19,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
 
     @Provides
     @Singleton
@@ -58,17 +54,5 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(
-            context,
-            AppDatabase::class.java,
-            "app_database"  // Database name
-        ).fallbackToDestructiveMigration() // Migration strategy
-            .build()
-    }
-
 
 }
